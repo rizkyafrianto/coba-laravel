@@ -1,0 +1,51 @@
+<!-- history belajar sebelum mengenal eloquent, tinker, migration  -->
+
+
+<?php
+
+namespace App\Models;
+
+use Psy\CodeCleaner\ReturnTypePass;
+
+class Post
+{
+    private static $blog_posts = [
+        [
+            "title" => "Judul Pertama",
+            "slug" => "judul-post-pertama",
+            "author" => "Rizky",
+            "body" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio excepturi ipsam, veritatis, sunt dicta provident ipsa officia autem numquam delectus quos quidem qui impedit quasi at magnam accusamus illum repudiandae dolore nam accusantium tempora inventore, harum odit! Facere magnam perferendis veniam eos saepe reprehenderit maxime corrupti, est architecto tempore. Temporibus velit laudantium modi cupiditate adipisci saepe neque animi, dolores nulla ex exercitationem veritatis, obcaecati facere esse ducimus totam dolorum, quae officiis accusamus voluptatum earum ipsum harum eius? Iste, nam delectus."
+        ],
+        [
+            "title" => "Judul Kedua",
+            "slug" => "judul-post-kedua",
+            "author" => "Munajar",
+            "body" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio excepturi ipsam, veritatis, sunt dicta provident ipsa officia autem numquam delectus quos quidem qui impedit quasi at magnam accusamus illum repudiandae dolore nam accusantium tempora inventore, harum odit! Facere magnam perferendis veniam eos saepe reprehenderit maxime corrupti, est architecto tempore. Temporibus velit laudantium modi cupiditate adipisci saepe neque animi, dolores nulla ex exercitationem veritatis, obcaecati facere esse ducimus totam dolorum, quae officiis accusamus voluptatum earum ipsum harum eius? Iste, nam delectus. Facere magnam perferendis veniam eos saepe reprehenderit maxime corrupti, est architecto tempore. Temporibus velit laudantium modi cupiditate adipisci saepe neque animi, dolores nulla ex exercitationem veritatis, obcaecati facere esse ducimus totam dolorum, quae officiis accusamus voluptatum earum ipsum harum eius? Iste, nam delectus."
+        ],
+        [
+            "title" => "Judul Ketiga",
+            "slug" => "judul-post-ketiga",
+            "author" => "Munir",
+            "body" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio excepturi ipsam, veritatis, sunt dicta provident ipsa officia autem numquam delectus quos quidem qui impedit quasi at magnam accusamus illum repudiandae dolore nam accusantium tempora inventore, harum odit! Facere magnam perferendis veniam eos saepe reprehenderit maxime corrupti, est architecto tempore. Temporibus velit laudantium modi cupiditate adipisci saepe neque animi, dolores nulla ex exercitationem veritatis, obcaecati facere esse ducimus totam dolorum, quae officiis accusamus voluptatum earum ipsum harum eius? Iste, nam delectus. Facere magnam perferendis veniam eos saepe reprehenderit maxime corrupti, est architecto tempore. Temporibus velit laudantium modi cupiditate adipisci saepe neque animi, dolores nulla ex exercitationem veritatis, obcaecati facere esse ducimus totam dolorum, quae officiis accusamus voluptatum earum ipsum harum eius? Iste, nam delectus. Facere magnam perferendis veniam eos saepe reprehenderit maxime corrupti, est architecto tempore. Temporibus velit laudantium modi cupiditate adipisci saepe neque animi, dolores nulla ex exercitationem veritatis, obcaecati facere esse ducimus totam dolorum, quae officiis accusamus voluptatum earum ipsum harum eius? Iste, nam delectus."
+        ],
+    ];
+
+    // function for posts
+    public static function all()
+    {
+        // penggunaan self untuk akses property static
+        // menjadikan array collection from laravel
+        return collect(self::$blog_posts);
+    }
+
+    // function for post
+    public static function find($slug)
+    {
+        // take all data from static collection
+        $posts = static::all();
+        
+        // return dan menggunakan method from collection
+        return $posts->firstWhere('slug', $slug);
+
+    }
+}
