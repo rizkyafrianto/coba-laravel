@@ -38,6 +38,6 @@ class DatabaseSeeder extends Seeder
             'slug' => 'web design'
         ]);
 
-        \App\Models\Post::factory(15)->create();
+        \App\Models\Post::factory(2)->create();
     }
 }
