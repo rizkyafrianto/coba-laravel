@@ -46,9 +46,9 @@ Route::get('categories', function () {
 });
 
 Route::get('/categories/{category:slug}', function (Category $category) {
-    return view('category', [
-        'title' => $category->name,
-        'posts' => $category->posts,
-        'category' => $category->name
+    return view('posts', [
+        'title' => "Post by Category : $category->name",
+        // solve N+1 problem by lazy eager load load()
+        'posts' => $category->posts->load('category')
     ]);
 });
