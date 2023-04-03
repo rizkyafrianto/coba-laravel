@@ -29,15 +29,15 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Category::create([
-            'name' => 'Personal',
-            'slug' => 'personal'
+            'name' => 'Travel',
+            'slug' => 'travel'
         ]);
 
         Category::create([
-            'name' => 'Web Design',
-            'slug' => 'web design'
+            'name' => 'War',
+            'slug' => 'war'
         ]);
 
-        \App\Models\Post::factory(2)->create();
+        \App\Models\Post::factory(20)->create();
     }
 }

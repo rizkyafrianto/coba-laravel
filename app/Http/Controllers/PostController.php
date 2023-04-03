@@ -12,10 +12,10 @@ class PostController extends Controller
     public function index()
     {
         return view('posts', [
-            "title" => "All Posts",
+            "title" => "",
+            "active" => "posts",
             // "posts" => Post::all()
-            // solve N+1 problem with() eager load 
-            "posts" => Post::with('category')->latest()->get()
+            "posts" => Post::latest()->get()
         ]);
     }
 
@@ -24,6 +24,7 @@ class PostController extends Controller
     {
         return view('post', [
             "title" => "single post",
+            "active" => "posts",
             "post" => $post
         ]);
     }

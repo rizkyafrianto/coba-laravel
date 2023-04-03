@@ -12,6 +12,9 @@ class Post extends Model
     /* protected $fillable = ['title', 'slug', 'excerpt', 'body']; */
     protected $guarded = ['id'];
 
+    // solve N+1 problem with() eager load 
+    protected $with = ['category'];
+
     public function category()
     {
         return $this->belongsTo(Category::class);
