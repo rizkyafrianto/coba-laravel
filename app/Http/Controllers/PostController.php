@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Post;
 
@@ -11,11 +12,18 @@ class PostController extends Controller
     // basic function
     public function index()
     {
+        // menambahkan title sesuai category
+        $title = '';
+        if (request('category')) {
+            $category = Category::firstWhere('slug', request('category'));
+            $title = $category->name;
+        }
+
+
         return view('posts', [
-            "title" => "",
-            "active" => "posts",
-            // "posts" => Post::all()
-            "posts" => Post::latest()->get()
+            "title" => "" . $title,
+            "active" => "blog",
+            "posts" => Post::latest()->filter(request(['search', 'category']))->paginate(7)->withQueryString()
         ]);
     }
 
@@ -24,7 +32,7 @@ class PostController extends Controller
     {
         return view('post', [
             "title" => "single post",
-            "active" => "posts",
+            "active" => "blog",
             "post" => $post
         ]);
     }

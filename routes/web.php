@@ -20,13 +20,15 @@ use App\Models\Category;
 // closure
 Route::get('/', function () {
     return view('home', [
-        "title" => "Home"
+        "title" => "Home",
+        "active" => "home"
     ]);
 });
 
 Route::get('/about', function () {
     return view('about', [
         "title" => "About",
+        "active" => "about",
         "name" => "Muhamad Rizky Afrianto",
         "email" => "rizky@gmail.com",
         "image" => "hanni.jpg"
@@ -46,7 +48,8 @@ Route::get('categories', function () {
     ]);
 });
 
-Route::get('/categories/{category:slug}', function (Category $category) {
+// route ini tak diperlukan karena was handle by post 
+/* Route::get('/categories/{category:slug}', function (Category $category) {
     return view('posts', [
         'title' => "Post by Category : $category->name",
         "active" => "categories",
@@ -54,3 +57,4 @@ Route::get('/categories/{category:slug}', function (Category $category) {
         'posts' => $category->posts->load('category')
     ]);
 });
+*/
