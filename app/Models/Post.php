@@ -16,7 +16,7 @@ class Post extends Model
     // solve N+1 problem with() eager load 
     protected $with = ['category'];
 
-    // using query scope for fitur filter
+    // using query scope for fitur search and search by filter
     public function scopeFilter($query, array $filters)
     {
         // using null coalescing operator

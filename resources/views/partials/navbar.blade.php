@@ -20,11 +20,38 @@
                     <a class="nav-link {{ $active == 'categories' ? 'active' : '' }}" href="/categories">Categories</a>
                 </li>
             </ul>
+
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link {{ $active == 'login' ? 'active' : '' }}" href="/login"><i
-                            class="bi bi-box-arrow-in-right"></i> Login</a>
-                </li>
+
+                {{-- blade directives for user autheticated  --}}
+                @auth
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Welcome back, {{ auth()->user()->name }}
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/dashboard"><i class="bi bi-window"></i> Dashboard</a></li>
+                            <hr class="dropdown-divider">
+                            <li>
+
+                                {{-- logout for user --}}
+                                <form action="/logout" method="post">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-in-right"></i>
+                                        Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+
+                    {{-- else for not authenticated --}}
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link {{ $active == 'login' ? 'active' : '' }}" href="/login"><i
+                                class="bi bi-box-arrow-in-right"></i> Login</a>
+                    </li>
+                @endauth
             </ul>
         </div>
     </div>

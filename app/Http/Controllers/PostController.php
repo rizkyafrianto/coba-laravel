@@ -19,7 +19,6 @@ class PostController extends Controller
             $title = $category->name;
         }
 
-
         return view('posts', [
             "title" => "" . $title,
             "active" => "blog",
