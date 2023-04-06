@@ -7,6 +7,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardPostController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,6 +77,9 @@ Route::get('/dashboard', function () {
         'active' => 'dadhboard'
     ]);
 })->middleware('auth');
+
+// routing untuk create slug pada 
+Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
 
 // resource tak bisa melakukan route binding
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
