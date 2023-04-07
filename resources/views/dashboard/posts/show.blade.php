@@ -14,9 +14,18 @@
                     {!! $post->body !!}
                 </article>
 
+                {{-- back button --}}
                 <a href="/dashboard/posts" class="btn btn-dark"><i class="bi bi-back"></i> Back</a>
-                <a href="" class="btn btn-warning"><i class="bi bi-pencil"></i> Edit</a>
-                <a href="" class="btn btn-danger"><i class="bi bi-x-circle"></i> Delete</a>
+                {{-- edit button --}}
+                <a href="/dashboard/posts/{{ $post->slug }}/edit" class="btn btn-warning"><i class="bi bi-pencil">
+                        Edit</i></a>
+                {{-- delete button --}}
+                <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline">
+                    @method('delete')
+                    @csrf
+                    <button class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="bi bi-x-circle"></i>
+                        Delete</button>
+                </form>
 
             </div>
         </div>

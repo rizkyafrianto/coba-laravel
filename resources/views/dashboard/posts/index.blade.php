@@ -7,7 +7,7 @@
 
     {{-- alert pop up when regist success --}}
     @if (session()->has('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="alert alert-success col-lg-8 alert-dismissible fade show" role="alert">
             {{ session('success') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
@@ -32,12 +32,21 @@
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->category->name }}</td>
                         <td>
+                            {{-- tool crud --}}
+
+                            {{-- show button --}}
                             <a href="/dashboard/posts/{{ $post->slug }}" class="badge bg-info"><i
                                     class="bi bi-eye"></i></a>
-                            <a href="/dashboard/posts/{{ $post->id }}" class="badge bg-warning"><i
+                            {{-- edit button --}}
+                            <a href="/dashboard/posts/{{ $post->slug }}/edit" class="badge bg-warning"><i
                                     class="bi bi-pencil"></i></a>
-                            <a href="/dashboard/posts/{{ $post->id }}" class="badge bg-danger"><i
-                                    class="bi bi-x-circle"></i></a>
+                            {{-- delete button --}}
+                            <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline">
+                                @method('delete')
+                                @csrf
+                                <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')"><i
+                                        class="bi bi-x-circle"></i></button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
