@@ -21,7 +21,8 @@ class LoginController extends Controller
     public function authenticate(Request $request): RedirectResponse
     {
         $credentials = $request->validate([
-            'email' => 'required|email:dns',
+            // using email:dns for auth
+            'email' => 'required|email',
             'password' => 'required'
 
         ]);

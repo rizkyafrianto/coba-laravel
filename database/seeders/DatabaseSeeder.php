@@ -16,12 +16,13 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        \App\Models\User::create([
+            'name' => 'Rizky Afrianto',
+            'email' => 'rizky@gmail.com',
+            'password' => bcrypt('password')
+        ]);
 
-        \App\Models\User::factory(5)->create();
+        \App\Models\User::factory(3)->create();
 
         Category::create([
             'name' => 'Web Programming',
