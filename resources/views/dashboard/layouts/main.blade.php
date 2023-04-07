@@ -11,7 +11,7 @@
     {{-- Bootstrap Icons --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 
-    <!-- Custom styles for this template -->
+    <!-- Custom styles for this dashboard -->
     <link href="/css/dashboard.css" rel="stylesheet">
 
     <!-- CDN for Trix  -->

@@ -62,7 +62,6 @@ Route::get('categories', function () {
 */
 
 // name('login')-> is for name route, routes that cannot access,redirect to routes login
-
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 
@@ -74,7 +73,6 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/dashboard', function () {
     return view('dashboard.index', [
         'title' => 'Dashboard',
-        'active' => 'dadhboard'
     ]);
 })->middleware('auth');
 

@@ -14,7 +14,7 @@
                 <div class="input-group mb-3">
                     <input type="text" autocomplete="off" class="form-control" placeholder="Search..." name="search"
                         value="{{ request('search') }}">
-                    <button class="btn btn-success" type="submit">Search</button>
+                    <button class="btn btn-secondary" type="submit">Search</button>
                 </div>
             </form>
         </div>
@@ -36,7 +36,7 @@
                 </p>
 
                 <p class="card-text">{{ $posts[0]->excerpt }}</p>
-                <a href="/blog/{{ $posts[0]->slug }}" class="text-decoration-none btn btn-primary">Read more</a>
+                <a href="/blog/{{ $posts[0]->slug }}" class="text-decoration-none btn btn-secondary">Read more</a>
 
             </div>
         </div>
@@ -58,7 +58,7 @@
                                     </small>
                                 </p>
                                 <p class="card-text">{{ $post->excerpt }}</p>
-                                <a href="/blog/{{ $post->slug }}" class="btn btn-primary">Read more</a>
+                                <a href="/blog/{{ $post->slug }}" class="btn btn-secondary">Read more</a>
                             </div>
                         </div>
                     </div>

@@ -11,7 +11,7 @@
                 <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}" class="img-fluid" alt="">
 
                 <article class="my-3 fs-6">
-                    {{ $post->body }}
+                    {!! $post->body !!}
                 </article>
 
                 <a href="/dashboard/posts" class="btn btn-dark"><i class="bi bi-back"></i> Back</a>

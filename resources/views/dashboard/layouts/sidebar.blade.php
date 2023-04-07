@@ -7,10 +7,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                {{-- <a class="nav-link {{ Request::is('dashboard/posts*') ? 'active' : '' }}" href="dashboard/posts">
-                    <i class="bi bi-stickies"></i> My Posts
-                </a> --}}
-                <a class="nav-link {{ Request::is('dashboard/posts') ? 'active' : '' }}" href="dashboard/posts">
+                <a class="nav-link {{ Request::is('dashboard/posts*') ? 'active' : '' }}" aria-current="page"
+                    href="/dashboard/posts">
                     <i class="bi bi-stickies"></i> My Posts
                 </a>
             </li>
