@@ -12,7 +12,7 @@
                 {{-- pengkondisian untuk gambar --}}
                 @if ($post->image)
                     <div style="max-height: 350px; overflow:hidden;">
-                        <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid" alt="">
+                        <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid col-sm-8" alt="">
                     </div>
                 @else
                     <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}" class="img-fluid"

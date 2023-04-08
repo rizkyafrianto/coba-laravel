@@ -6,14 +6,14 @@
     </div>
 
     <div class="col-lg-8">
-        <form method="post" action="/dashboard/posts/{{ $post->slug }}" class="mb-5">
+        <form method="post" action="/dashboard/posts/{{ $post->slug }}" class="mb-5" enctype="multipart/form-data">
             @method('put')
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 {{-- oldy('', $). merupakan fitur laravel untuk cetak value old value --}}
-                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title"
-                    required value="{{ old('title', $post->title) }}">
+                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
+                    name="title" required value="{{ old('title', $post->title) }}">
                 @error('title')
                     {{ $message }}
                 @enderror
@@ -37,6 +37,25 @@
                         @endif
                     @endforeach
                 </select>
+            </div>
+            {{-- image --}}
+            <div class="mb-3">
+                <label for="image" class="form-label">Update image</label>
+                <input type="hidden" name="oldImage" value="{{ $post->image }}">
+                {{-- case if untuk preview old image --}}
+                @if ($post->image)
+                    <div>
+                        <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid img-preview col-sm-5 mb-3">
+                    </div>
+                @else
+                    <img class="img-fluid img-preview col-sm-5 mb-3">
+                @endif
+                {{-- case input and preview image --}}
+                <input class="form-control @error('image') is-invalid @enderror" type="file" id="image"
+                    name="image" onchange="previewImage()">
+                @error('image')
+                    {{ $message }}
+                @enderror
             </div>
             <div>
                 <label for="body" class="form-label">Body</label>
@@ -67,5 +86,20 @@
         document.addEventListener('trix-file-accept', function(e) {
             e.preventDefault()
         });
+
+        // script untuk membuat preview image 
+        function previewImage() {
+            const image = document.querySelector('#image');
+            const imgPreview = document.querySelector('.img-preview');
+
+            imgPreview.style.display = 'block';
+
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+
+            oFReader.onload = function(oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
+        }
     </script>
 @endsection

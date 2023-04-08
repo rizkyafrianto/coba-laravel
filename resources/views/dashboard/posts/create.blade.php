@@ -43,8 +43,10 @@
             {{-- Image input --}}
             <div class="mb-3">
                 <label for="image" class="form-label">Post image</label>
+                {{-- case input and preview image --}}
+                <img class="img-fluid img-preview col-sm-5 mb-3">
                 <input class="form-control @error('image') is-invalid @enderror" type="file" id="image"
-                    name="image">
+                    name="image" onchange="previewImage()">
                 @error('image')
                     {{ $message }}
                 @enderror
@@ -79,5 +81,20 @@
         document.addEventListener('trix-file-accept', function(e) {
             e.preventDefault()
         });
+
+        // script untuk membuat preview image 
+        function previewImage() {
+            const image = document.querySelector('#image');
+            const imgPreview = document.querySelector('.img-preview');
+
+            imgPreview.style.display = 'block';
+
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+
+            oFReader.onload = function(oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
+        }
     </script>
 @endsection
