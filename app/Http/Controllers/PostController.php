@@ -9,6 +9,20 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
+
+    // fitur sederhana search
+    /*public function index(Request $request)
+    {
+        if ($request) {
+            $posts = Post::where('title', 'like', '%' . $request->search . '%')->orWhere('body', 'like', '%' . $request->search . '%')->get();
+        } else {
+            $posts = Post::all();
+        }
+        return view('home', compact('posts', 'request'), [
+            'title' => 'space'
+        ]);
+    }*/
+
     // basic function
     public function index()
     {
