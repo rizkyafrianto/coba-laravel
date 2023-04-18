@@ -50,6 +50,7 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
+    // untuk mengganti slug menjadi default key route bind
     public function getRouteKeyName(): string
     {
         return 'slug';

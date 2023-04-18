@@ -91,3 +91,5 @@ Route::resource('/dashboard/categories', AdminCategoryController::class)->except
 Route::fallback(function () {
     return "Halalaman yang anda cari, tidak ditemukan";
 });
+
+/* parameter route binding(controller) pada resource juga harus menyamakan dengan parameter pada belakang route:list*/
