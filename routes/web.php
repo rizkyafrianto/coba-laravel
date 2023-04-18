@@ -86,3 +86,8 @@ Route::resource('/dashboard/posts', DashboardPostController::class)->middleware(
 Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('is_admin');
 
 // this web also using gate['admin'] for authorize
+
+// route fallback, defaultnya gunakan halaman 404 laravel
+Route::fallback(function () {
+    return "Halalaman yang anda cari, tidak ditemukan";
+});
